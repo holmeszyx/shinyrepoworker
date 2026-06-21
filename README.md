@@ -37,6 +37,13 @@ npm run deploy
 # or similar package manager command
 ```
 
+## vinext
+
+    npm run dev:vinext    Start the vinext dev server
+    npm run build:vinext  Build production output
+    npm run start:vinext  Start vinext production server
+    npm run dev           Start Next.js (still works as before)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

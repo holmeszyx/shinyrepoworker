@@ -10,7 +10,11 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+    "dev:vinext": "vinext dev --port 3001",
+    "build:vinext": "vinext build",
+    "start:vinext": "vinext start",
+    "deploy:vinext": "vinext deploy"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.19.9",
@@ -19,15 +23,22 @@
     "react-dom": "^19.1.7"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.42.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.43",
     "@types/react": "^19.1.7",
     "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-rsc": "^0.5.27",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "react-server-dom-webpack": "^19.2.7",
     "tailwindcss": "^4",
     "typescript": "^5.7.4",
+    "vinext": "^0.1.6",
+    "vite": "^8.0.16",
     "wrangler": "^4.103.0"
-  }
+  },
+  "type": "module"
 }
