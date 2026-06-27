@@ -68,6 +68,14 @@ function authorize(user: ProxyUser, method: string): boolean {
 	return false;
 }
 
+function isPathAllowed(segments: string[]): boolean {
+	if (segments.length < 2) return false;
+	for (const seg of segments) {
+		if (seg.startsWith(".")) return false;
+	}
+	return true;
+}
+
 function buildRawUrl(owner: string, repo: string, path: string): string {
 	return `https://raw.githubusercontent.com/${owner}/${repo}/${GITHUB_REF}/${path}`;
 }
@@ -173,6 +181,10 @@ async function handleRequest(
 	const pathSegments = resolved.path;
 	const path = (pathSegments ?? []).join("/");
 	const method = request.method.toUpperCase();
+
+	if (!isPathAllowed(pathSegments)) {
+		return new Response("Forbidden path", { status: 403 });
+	}
 
 	const githubToken = process.env.GITHUB_TOKEN;
 	const owner = process.env.GITHUB_OWNER;
